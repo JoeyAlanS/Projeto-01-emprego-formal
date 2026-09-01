@@ -1,0 +1,115 @@
+{
+  "cempre_2022": {
+    "arquivo_raw": "dados/raw/t9509_cempre_economia_emprego_2022_ce_br.csv",
+    "linhas": 1116,
+    "colunas": 10,
+    "periodos": [
+      "2022"
+    ],
+    "unidades": [
+      "Mil Reais",
+      "Pessoas",
+      "Reais",
+      "Unidades"
+    ],
+    "niveis": {
+      "N6": 1104,
+      "N1": 6,
+      "N3": 6
+    },
+    "municipios": 184,
+    "duplicatas_chave": 0,
+    "simbolos_sidra": {
+      "-": 0,
+      "0": 0,
+      "X": 0,
+      "..": 0,
+      "...": 0
+    },
+    "valores_numericos_na": 0,
+    "regra_tratamento": "-, X, .. e ... foram tipados como NA; 0 foi preservado como zero válido."
+  },
+  "pib_estrutura_2021": {
+    "arquivo_raw": "dados/raw/t5938_pib_estrutura_economica_2021_ce_br.csv",
+    "linhas": 1860,
+    "colunas": 10,
+    "periodos": [
+      "2021"
+    ],
+    "unidades": [
+      "%",
+      "Mil Reais"
+    ],
+    "niveis": {
+      "N6": 1840,
+      "N1": 10,
+      "N3": 10
+    },
+    "municipios": 184,
+    "duplicatas_chave": 0,
+    "simbolos_sidra": {
+      "-": 0,
+      "0": 0,
+      "X": 0,
+      "..": 0,
+      "...": 0
+    },
+    "valores_numericos_na": 0,
+    "regra_tratamento": "-, X, .. e ... foram tipados como NA; 0 foi preservado como zero válido."
+  },
+  "pib_total_2022": {
+    "arquivo_raw": "dados/raw/t5938_pib_2022_ce_br.csv",
+    "linhas": 186,
+    "colunas": 10,
+    "periodos": [
+      "2022"
+    ],
+    "unidades": [
+      "Mil Reais"
+    ],
+    "niveis": {
+      "N6": 184,
+      "N1": 1,
+      "N3": 1
+    },
+    "municipios": 184,
+    "duplicatas_chave": 0,
+    "simbolos_sidra": {
+      "-": 0,
+      "0": 0,
+      "X": 0,
+      "..": 0,
+      "...": 0
+    },
+    "valores_numericos_na": 0,
+    "regra_tratamento": "-, X, .. e ... foram tipados como NA; 0 foi preservado como zero válido."
+  },
+  "censo_pop_2022": {
+    "arquivo_raw": "dados/raw/t4709_populacao_censo_2022_ce_br.csv",
+    "linhas": 558,
+    "colunas": 10,
+    "periodos": [
+      "2022"
+    ],
+    "unidades": [
+      "%",
+      "Pessoas"
+    ],
+    "niveis": {
+      "N6": 552,
+      "N1": 3,
+      "N3": 3
+    },
+    "municipios": 184,
+    "duplicatas_chave": 0,
+    "simbolos_sidra": {
+      "-": 0,
+      "0": 0,
+      "X": 0,
+      "..": 0,
+      "...": 0
+    },
+    "valores_numericos_na": 0,
+    "regra_tratamento": "-, X, .. e ... foram tipados como NA; 0 foi preservado como zero válido."
+  }
+}

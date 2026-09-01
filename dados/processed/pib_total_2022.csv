@@ -1,0 +1,187 @@
+﻿nivel_territorial_codigo;nivel_territorial_nome;territorio_codigo;territorio_nome;ano_codigo;ano_nome;variavel_codigo;variavel_nome;unidade;valor;valor_numerico;status_valor
+N1;Brasil;1;Brasil;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;10079676378;10079676378;disponivel
+N3;Unidade da Federação;23;Ceará;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;213600674;213600674;disponivel
+N6;Município;2300101;Abaiara - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;126794;126794;disponivel
+N6;Município;2300150;Acarape - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;183507;183507;disponivel
+N6;Município;2300200;Acaraú - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1184672;1184672;disponivel
+N6;Município;2300309;Acopiara - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;604192;604192;disponivel
+N6;Município;2300408;Aiuaba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;146744;146744;disponivel
+N6;Município;2300507;Alcântaras - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;105770;105770;disponivel
+N6;Município;2300606;Altaneira - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;82201;82201;disponivel
+N6;Município;2300705;Alto Santo - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;240389;240389;disponivel
+N6;Município;2300754;Amontada - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;684586;684586;disponivel
+N6;Município;2300804;Antonina do Norte - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;89238;89238;disponivel
+N6;Município;2300903;Apuiarés - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;134458;134458;disponivel
+N6;Município;2301000;Aquiraz - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;4429050;4429050;disponivel
+N6;Município;2301109;Aracati - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1791174;1791174;disponivel
+N6;Município;2301208;Aracoiaba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;285457;285457;disponivel
+N6;Município;2301257;Ararendá - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;117634;117634;disponivel
+N6;Município;2301307;Araripe - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;219194;219194;disponivel
+N6;Município;2301406;Aratuba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;159277;159277;disponivel
+N6;Município;2301505;Arneiroz - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;81651;81651;disponivel
+N6;Município;2301604;Assaré - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;273041;273041;disponivel
+N6;Município;2301703;Aurora - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;250837;250837;disponivel
+N6;Município;2301802;Baixio - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;69658;69658;disponivel
+N6;Município;2301851;Banabuiú - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;296956;296956;disponivel
+N6;Município;2301901;Barbalha - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1599703;1599703;disponivel
+N6;Município;2301950;Barreira - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;267357;267357;disponivel
+N6;Município;2302008;Barro - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;262523;262523;disponivel
+N6;Município;2302057;Barroquinha - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;150759;150759;disponivel
+N6;Município;2302107;Baturité - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;503468;503468;disponivel
+N6;Município;2302206;Beberibe - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1208892;1208892;disponivel
+N6;Município;2302305;Bela Cruz - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;353476;353476;disponivel
+N6;Município;2302404;Boa Viagem - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;584404;584404;disponivel
+N6;Município;2302503;Brejo Santo - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1009688;1009688;disponivel
+N6;Município;2302602;Camocim - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;855906;855906;disponivel
+N6;Município;2302701;Campos Sales - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;314915;314915;disponivel
+N6;Município;2302800;Canindé - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1021411;1021411;disponivel
+N6;Município;2302909;Capistrano - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;190140;190140;disponivel
+N6;Município;2303006;Caridade - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;187437;187437;disponivel
+N6;Município;2303105;Cariré - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;208196;208196;disponivel
+N6;Município;2303204;Caririaçu - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;271670;271670;disponivel
+N6;Município;2303303;Cariús - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;193985;193985;disponivel
+N6;Município;2303402;Carnaubal - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;185440;185440;disponivel
+N6;Município;2303501;Cascavel - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1182740;1182740;disponivel
+N6;Município;2303600;Catarina - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;132473;132473;disponivel
+N6;Município;2303659;Catunda - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;117230;117230;disponivel
+N6;Município;2303709;Caucaia - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;9891544;9891544;disponivel
+N6;Município;2303808;Cedro - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;260564;260564;disponivel
+N6;Município;2303907;Chaval - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;125251;125251;disponivel
+N6;Município;2303931;Choró - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;192951;192951;disponivel
+N6;Município;2303956;Chorozinho - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;255377;255377;disponivel
+N6;Município;2304004;Coreaú - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;236193;236193;disponivel
+N6;Município;2304103;Crateús - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1088879;1088879;disponivel
+N6;Município;2304202;Crato - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;2178406;2178406;disponivel
+N6;Município;2304236;Croatá - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;233557;233557;disponivel
+N6;Município;2304251;Cruz - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;470272;470272;disponivel
+N6;Município;2304269;Deputado Irapuan Pinheiro - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;111392;111392;disponivel
+N6;Município;2304277;Ereré - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;93228;93228;disponivel
+N6;Município;2304285;Eusébio - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;4557316;4557316;disponivel
+N6;Município;2304301;Farias Brito - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;225755;225755;disponivel
+N6;Município;2304350;Forquilha - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;310510;310510;disponivel
+N6;Município;2304400;Fortaleza - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;81362333;81362333;disponivel
+N6;Município;2304459;Fortim - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;331346;331346;disponivel
+N6;Município;2304509;Frecheirinha - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;356851;356851;disponivel
+N6;Município;2304608;General Sampaio - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;89926;89926;disponivel
+N6;Município;2304657;Graça - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;136808;136808;disponivel
+N6;Município;2304707;Granja - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;514903;514903;disponivel
+N6;Município;2304806;Granjeiro - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;55419;55419;disponivel
+N6;Município;2304905;Groaíras - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;123687;123687;disponivel
+N6;Município;2304954;Guaiúba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;272368;272368;disponivel
+N6;Município;2305001;Guaraciaba do Norte - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;728027;728027;disponivel
+N6;Município;2305100;Guaramiranga - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;94083;94083;disponivel
+N6;Município;2305209;Hidrolândia - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;204119;204119;disponivel
+N6;Município;2305233;Horizonte - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;2501483;2501483;disponivel
+N6;Município;2305266;Ibaretama - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;144293;144293;disponivel
+N6;Município;2305308;Ibiapina - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;380747;380747;disponivel
+N6;Município;2305332;Ibicuitinga - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;125308;125308;disponivel
+N6;Município;2305357;Icapuí - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;400632;400632;disponivel
+N6;Município;2305407;Icó - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;796420;796420;disponivel
+N6;Município;2305506;Iguatu - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;2054539;2054539;disponivel
+N6;Município;2305605;Independência - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;347468;347468;disponivel
+N6;Município;2305654;Ipaporanga - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;116772;116772;disponivel
+N6;Município;2305704;Ipaumirim - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;167158;167158;disponivel
+N6;Município;2305803;Ipu - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;575072;575072;disponivel
+N6;Município;2305902;Ipueiras - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;385582;385582;disponivel
+N6;Município;2306009;Iracema - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;211262;211262;disponivel
+N6;Município;2306108;Irauçuba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;251621;251621;disponivel
+N6;Município;2306207;Itaiçaba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;89380;89380;disponivel
+N6;Município;2306256;Itaitinga - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1588814;1588814;disponivel
+N6;Município;2306306;Itapajé - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;702418;702418;disponivel
+N6;Município;2306405;Itapipoca - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;2129866;2129866;disponivel
+N6;Município;2306504;Itapiúna - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;182347;182347;disponivel
+N6;Município;2306553;Itarema - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;722769;722769;disponivel
+N6;Município;2306603;Itatira - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;190135;190135;disponivel
+N6;Município;2306702;Jaguaretama - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;257163;257163;disponivel
+N6;Município;2306801;Jaguaribara - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;165067;165067;disponivel
+N6;Município;2306900;Jaguaribe - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;637711;637711;disponivel
+N6;Município;2307007;Jaguaruana - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;598757;598757;disponivel
+N6;Município;2307106;Jardim - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;310208;310208;disponivel
+N6;Município;2307205;Jati - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;140334;140334;disponivel
+N6;Município;2307254;Jijoca de Jericoacoara - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;696532;696532;disponivel
+N6;Município;2307304;Juazeiro do Norte - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;5783730;5783730;disponivel
+N6;Município;2307403;Jucás - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;347057;347057;disponivel
+N6;Município;2307502;Lavras da Mangabeira - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;390628;390628;disponivel
+N6;Município;2307601;Limoeiro do Norte - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1651936;1651936;disponivel
+N6;Município;2307635;Madalena - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;208238;208238;disponivel
+N6;Município;2307650;Maracanaú - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;14004934;14004934;disponivel
+N6;Município;2307700;Maranguape - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1793354;1793354;disponivel
+N6;Município;2307809;Marco - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;410771;410771;disponivel
+N6;Município;2307908;Martinópole - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;109552;109552;disponivel
+N6;Município;2308005;Massapê - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;441702;441702;disponivel
+N6;Município;2308104;Mauriti - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;640789;640789;disponivel
+N6;Município;2308203;Meruoca - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;143855;143855;disponivel
+N6;Município;2308302;Milagres - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;317938;317938;disponivel
+N6;Município;2308351;Milhã - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;226109;226109;disponivel
+N6;Município;2308377;Miraíma - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;127318;127318;disponivel
+N6;Município;2308401;Missão Velha - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;586551;586551;disponivel
+N6;Município;2308500;Mombaça - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;531262;531262;disponivel
+N6;Município;2308609;Monsenhor Tabosa - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;179307;179307;disponivel
+N6;Município;2308708;Morada Nova - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1570710;1570710;disponivel
+N6;Município;2308807;Moraújo - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;80172;80172;disponivel
+N6;Município;2308906;Morrinhos - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;220951;220951;disponivel
+N6;Município;2309003;Mucambo - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;144254;144254;disponivel
+N6;Município;2309102;Mulungu - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;134732;134732;disponivel
+N6;Município;2309201;Nova Olinda - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;179077;179077;disponivel
+N6;Município;2309300;Nova Russas - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;381139;381139;disponivel
+N6;Município;2309409;Novo Oriente - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;302450;302450;disponivel
+N6;Município;2309458;Ocara - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;304032;304032;disponivel
+N6;Município;2309508;Orós - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;234968;234968;disponivel
+N6;Município;2309607;Pacajus - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1534458;1534458;disponivel
+N6;Município;2309706;Pacatuba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1460733;1460733;disponivel
+N6;Município;2309805;Pacoti - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;153002;153002;disponivel
+N6;Município;2309904;Pacujá - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;68377;68377;disponivel
+N6;Município;2310001;Palhano - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;116455;116455;disponivel
+N6;Município;2310100;Palmácia - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;120067;120067;disponivel
+N6;Município;2310209;Paracuru - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;595518;595518;disponivel
+N6;Município;2310258;Paraipaba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;643388;643388;disponivel
+N6;Município;2310308;Parambu - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;309635;309635;disponivel
+N6;Município;2310407;Paramoti - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;121524;121524;disponivel
+N6;Município;2310506;Pedra Branca - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;411066;411066;disponivel
+N6;Município;2310605;Penaforte - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;142781;142781;disponivel
+N6;Município;2310704;Pentecoste - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;537433;537433;disponivel
+N6;Município;2310803;Pereiro - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;530452;530452;disponivel
+N6;Município;2310852;Pindoretama - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;320047;320047;disponivel
+N6;Município;2310902;Piquet Carneiro - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;181463;181463;disponivel
+N6;Município;2310951;Pires Ferreira - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;91198;91198;disponivel
+N6;Município;2311009;Poranga - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;128390;128390;disponivel
+N6;Município;2311108;Porteiras - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;207091;207091;disponivel
+N6;Município;2311207;Potengi - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;115651;115651;disponivel
+N6;Município;2311231;Potiretama - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;92924;92924;disponivel
+N6;Município;2311264;Quiterianópolis - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;211391;211391;disponivel
+N6;Município;2311306;Quixadá - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1283066;1283066;disponivel
+N6;Município;2311355;Quixelô - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;214522;214522;disponivel
+N6;Município;2311405;Quixeramobim - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1725840;1725840;disponivel
+N6;Município;2311504;Quixeré - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;682150;682150;disponivel
+N6;Município;2311603;Redenção - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;450867;450867;disponivel
+N6;Município;2311702;Reriutaba - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;213295;213295;disponivel
+N6;Município;2311801;Russas - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1332638;1332638;disponivel
+N6;Município;2311900;Saboeiro - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;164970;164970;disponivel
+N6;Município;2311959;Salitre - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;187867;187867;disponivel
+N6;Município;2312007;Santana do Acaraú - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;313120;313120;disponivel
+N6;Município;2312106;Santana do Cariri - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;164591;164591;disponivel
+N6;Município;2312205;Santa Quitéria - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;715965;715965;disponivel
+N6;Município;2312304;São Benedito - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;710000;710000;disponivel
+N6;Município;2312403;São Gonçalo do Amarante - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;6894155;6894155;disponivel
+N6;Município;2312502;São João do Jaguaribe - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;114371;114371;disponivel
+N6;Município;2312601;São Luís do Curu - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;147888;147888;disponivel
+N6;Município;2312700;Senador Pompeu - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;432508;432508;disponivel
+N6;Município;2312809;Senador Sá - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;71512;71512;disponivel
+N6;Município;2312908;Sobral - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;6016970;6016970;disponivel
+N6;Município;2313005;Solonópole - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;318203;318203;disponivel
+N6;Município;2313104;Tabuleiro do Norte - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;563950;563950;disponivel
+N6;Município;2313203;Tamboril - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;316962;316962;disponivel
+N6;Município;2313252;Tarrafas - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;88539;88539;disponivel
+N6;Município;2313302;Tauá - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;802395;802395;disponivel
+N6;Município;2313351;Tejuçuoca - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;153337;153337;disponivel
+N6;Município;2313401;Tianguá - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;1913964;1913964;disponivel
+N6;Município;2313500;Trairi - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;947833;947833;disponivel
+N6;Município;2313559;Tururu - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;154602;154602;disponivel
+N6;Município;2313609;Ubajara - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;714256;714256;disponivel
+N6;Município;2313708;Umari - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;75948;75948;disponivel
+N6;Município;2313757;Umirim - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;194961;194961;disponivel
+N6;Município;2313807;Uruburetama - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;460850;460850;disponivel
+N6;Município;2313906;Uruoca - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;238457;238457;disponivel
+N6;Município;2313955;Varjota - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;404964;404964;disponivel
+N6;Município;2314003;Várzea Alegre - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;502914;502914;disponivel
+N6;Município;2314102;Viçosa do Ceará - CE;2022;2022;37;Produto Interno Bruto a preços correntes;Mil Reais;642465;642465;disponivel

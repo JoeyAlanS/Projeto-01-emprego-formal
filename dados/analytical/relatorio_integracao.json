@@ -1,0 +1,38 @@
+{
+  "chave": "territorio_codigo (código IBGE de sete dígitos)",
+  "granularidade_saida": "um registro por município do Ceará",
+  "cardinalidade_esperada": "1:1 após filtrar N6 e variáveis selecionadas",
+  "bases": {
+    "cempre_2022": {
+      "municipios": 184,
+      "duplicatas_chave": 0,
+      "correspondencias_com_acumulado": 184,
+      "nao_correspondencias_esquerda": 0,
+      "nao_correspondencias_direita": 0
+    },
+    "pib_estrutura_2021": {
+      "municipios": 184,
+      "duplicatas_chave": 0,
+      "correspondencias_com_acumulado": 184,
+      "nao_correspondencias_esquerda": 0,
+      "nao_correspondencias_direita": 0
+    },
+    "pib_total_2022": {
+      "municipios": 184,
+      "duplicatas_chave": 0
+    },
+    "censo_pop_2022": {
+      "municipios": 184,
+      "duplicatas_chave": 0,
+      "correspondencias_com_acumulado": 184,
+      "nao_correspondencias_esquerda": 0,
+      "nao_correspondencias_direita": 0
+    }
+  },
+  "resultado_final": {
+    "municipios": 184,
+    "correspondencias_totais": 184,
+    "mediana_pib_per_capita_reais": 13087.736302836765,
+    "mediana_intensidade_ocupacao_formal_por_mil_hab": 102.80426111221377
+  }
+}
