@@ -4,6 +4,7 @@ Execute a partir da raiz com: streamlit run app/app.py
 Equipe: Joey Alan e Paulo Henrico.
 """
 
+import json
 from pathlib import Path
 
 import geopandas as gpd
@@ -39,10 +40,15 @@ st.set_page_config(page_title="Economia e emprego formal - CE", page_icon="📊"
 
 
 @st.cache_data
-def carregar_dados() -> tuple[pd.DataFrame, gpd.GeoDataFrame]:
+def carregar_dados() -> tuple[pd.DataFrame, gpd.GeoDataFrame, dict]:
     """Carrega e valida a base tabular e sua correspondência com a malha."""
     df = pd.read_csv(BASE_PATH, sep=";", encoding="utf-8-sig", dtype={"territorio_codigo": "string"})
     malha = gpd.read_file(MAP_PATH)
+    with open(MAP_PATH, "r", encoding="utf-8") as f:
+        geojson_malha = json.load(f)
+
+    for feat in geojson_malha.get("features", []):
+        feat["id"] = str(feat.get("properties", {}).get("codarea", "")).strip().zfill(7)
 
     df["territorio_codigo"] = df["territorio_codigo"].str.strip().str.zfill(7)
     malha["codarea"] = malha["codarea"].astype("string").str.strip().str.zfill(7)
@@ -73,7 +79,7 @@ def carregar_dados() -> tuple[pd.DataFrame, gpd.GeoDataFrame]:
     mapa = mapa.drop(columns="_merge")
     df["municipio_exibicao"] = df["territorio_nome"].str.replace(" - CE", "", regex=False)
     mapa["municipio_exibicao"] = mapa["territorio_nome"].str.replace(" - CE", "", regex=False)
-    return df, mapa
+    return df, mapa, geojson_malha
 
 
 def limites_escala_robusta(valores: pd.Series) -> tuple[float, float]:
@@ -107,7 +113,7 @@ if not MAP_PATH.exists():
     st.stop()
 
 try:
-    df, mapa_base = carregar_dados()
+    df, mapa_base, geojson_malha = carregar_dados()
 except (OSError, ValueError) as erro:
     st.error(f"Não foi possível preparar os dados do mapa: {erro}")
     st.stop()
@@ -168,6 +174,223 @@ if comparacao_ativa:
     )
 else:
     st.caption("Selecione municípios na barra lateral para compará-los; sem seleção, os gráficos mostram o recorte completo.")
+
+# ── Comparação direta (exatamente 2 municípios) ─────────────────────────
+if comparacao_ativa and len(comparacao) == 2:
+    st.subheader("Comparação direta", divider="blue")
+
+    linha_a = comparacao.iloc[0]
+    linha_b = comparacao.iloc[1]
+    nome_a = linha_a["municipio_exibicao"]
+    nome_b = linha_b["municipio_exibicao"]
+
+    # Indicadores para a comparação direta
+    INDICADORES_DIRETOS = {
+        "PIB per capita (R$)": {
+            "coluna": "pib_per_capita_reais_2022",
+            "formato": "R$ {:,.0f}",
+            "maior_melhor": True,
+        },
+        "Intensidade formal (por mil hab.)": {
+            "coluna": "intensidade_ocupacao_formal_por_mil_hab_2022",
+            "formato": "{:,.1f}",
+            "maior_melhor": True,
+        },
+        "Salário médio mensal (R$)": {
+            "coluna": "salario_medio_mensal_reais_2022",
+            "formato": "R$ {:,.0f}",
+            "maior_melhor": True,
+        },
+        "População (2022)": {
+            "coluna": "populacao_residente_2022",
+            "formato": "{:,.0f}",
+            "maior_melhor": None,  # neutro
+        },
+        "Crescimento pop. 2010-2022 (%)": {
+            "coluna": "crescimento_populacional_pct_2010_2022",
+            "formato": "{:+.2f}%",
+            "maior_melhor": None,
+        },
+        "Proporção de assalariados (%)": {
+            "coluna": "proporcao_assalariados_pct_2022",
+            "formato": "{:.1f}%",
+            "maior_melhor": True,
+        },
+    }
+
+    # ── KPIs lado a lado ────────────────────────────────────────────────
+    st.markdown(f"**{nome_a}** × **{nome_b}**")
+
+    kpi_cols = st.columns(3)
+    for idx, (rotulo, meta) in enumerate(list(INDICADORES_DIRETOS.items())[:6]):
+        col = kpi_cols[idx % 3]
+        val_a = linha_a[meta["coluna"]]
+        val_b = linha_b[meta["coluna"]]
+        diff = val_a - val_b if pd.notna(val_a) and pd.notna(val_b) else None
+
+        with col:
+            with st.container(border=True):
+                st.caption(rotulo)
+                ca, cb = st.columns(2)
+                with ca:
+                    delta_a = None
+                    delta_color = "off"
+                    if diff is not None and diff != 0:
+                        delta_a = meta["formato"].format(abs(diff))
+                        if diff > 0:
+                            delta_a = f"+{delta_a}"
+                            delta_color = "normal" if meta["maior_melhor"] else ("inverse" if meta["maior_melhor"] is False else "off")
+                        else:
+                            delta_a = f"-{delta_a}"
+                            delta_color = "inverse" if meta["maior_melhor"] else ("normal" if meta["maior_melhor"] is False else "off")
+                    st.metric(
+                        nome_a,
+                        meta["formato"].format(val_a) if pd.notna(val_a) else "—",
+                        delta=delta_a,
+                        delta_color=delta_color,
+                    )
+                with cb:
+                    delta_b = None
+                    delta_color_b = "off"
+                    if diff is not None and diff != 0:
+                        delta_b = meta["formato"].format(abs(diff))
+                        if diff < 0:
+                            delta_b = f"+{delta_b}"
+                            delta_color_b = "normal" if meta["maior_melhor"] else ("inverse" if meta["maior_melhor"] is False else "off")
+                        else:
+                            delta_b = f"-{delta_b}"
+                            delta_color_b = "inverse" if meta["maior_melhor"] else ("normal" if meta["maior_melhor"] is False else "off")
+                    st.metric(
+                        nome_b,
+                        meta["formato"].format(val_b) if pd.notna(val_b) else "—",
+                        delta=delta_b,
+                        delta_color=delta_color_b,
+                    )
+
+    # ── Gráfico radar ───────────────────────────────────────────────────
+    col_radar, col_estrutura = st.columns(2)
+
+    with col_radar:
+        st.markdown("**Perfil comparativo (indicadores normalizados)**")
+
+        eixos_radar = {
+            "PIB per capita": "pib_per_capita_reais_2022",
+            "Intensidade formal": "intensidade_ocupacao_formal_por_mil_hab_2022",
+            "Salário médio": "salario_medio_mensal_reais_2022",
+            "Unid. locais/mil hab.": "unidades_locais_por_mil_hab_2022",
+            "% Assalariados": "proporcao_assalariados_pct_2022",
+        }
+
+        # Normalizar min-max dentro do recorte atual
+        categorias = list(eixos_radar.keys())
+        valores_a = []
+        valores_b = []
+        for rotulo_r, col_r in eixos_radar.items():
+            serie = recorte[col_r].dropna()
+            vmin, vmax = float(serie.min()), float(serie.max())
+            amplitude = vmax - vmin if vmax != vmin else 1.0
+            valores_a.append((float(linha_a[col_r]) - vmin) / amplitude if pd.notna(linha_a[col_r]) else 0)
+            valores_b.append((float(linha_b[col_r]) - vmin) / amplitude if pd.notna(linha_b[col_r]) else 0)
+
+        fig_radar = go.Figure()
+        fig_radar.add_trace(go.Scatterpolar(
+            r=valores_a + [valores_a[0]],
+            theta=categorias + [categorias[0]],
+            fill="toself",
+            name=nome_a,
+            opacity=0.6,
+        ))
+        fig_radar.add_trace(go.Scatterpolar(
+            r=valores_b + [valores_b[0]],
+            theta=categorias + [categorias[0]],
+            fill="toself",
+            name=nome_b,
+            opacity=0.6,
+        ))
+        fig_radar.update_layout(
+            polar=dict(radialaxis=dict(visible=True, range=[0, 1], showticklabels=False)),
+            showlegend=True,
+            legend=dict(orientation="h", yanchor="bottom", y=-0.2, xanchor="center", x=0.5),
+            margin=dict(l=40, r=40, t=20, b=40),
+            height=380,
+        )
+        st.plotly_chart(fig_radar, width="stretch", key="radar_comparacao")
+        st.caption("Valores normalizados entre 0 e 1 (min-max do recorte atual). Quanto mais externo, maior o indicador relativo.")
+
+    # ── Composição setorial (barras horizontais) ────────────────────────
+    with col_estrutura:
+        st.markdown("**Composição setorial do VAB (2021)**")
+
+        setores = ["Agropecuária", "Indústria", "Serviços", "Administração"]
+        colunas_setor = [
+            "participacao_agropecuaria_pct_2021",
+            "participacao_industria_pct_2021",
+            "participacao_servicos_pct_2021",
+            "participacao_administracao_pct_2021",
+        ]
+
+        dados_setores = pd.DataFrame({
+            "Município": [nome_a] * 4 + [nome_b] * 4,
+            "Setor": setores * 2,
+            "Participação (%)": [linha_a[c] for c in colunas_setor] + [linha_b[c] for c in colunas_setor],
+        })
+
+        fig_setores = px.bar(
+            dados_setores,
+            x="Participação (%)",
+            y="Município",
+            color="Setor",
+            orientation="h",
+            barmode="stack",
+            color_discrete_sequence=["#2ca02c", "#1f77b4", "#ff7f0e", "#d62728"],
+            height=260,
+        )
+        fig_setores.update_layout(
+            margin=dict(l=0, r=0, t=10, b=0),
+            yaxis=dict(automargin=True),
+            legend=dict(orientation="h", yanchor="bottom", y=-0.4, xanchor="center", x=0.5),
+        )
+        st.plotly_chart(fig_setores, width="stretch", key="setores_comparacao")
+        st.caption("Participação percentual dos setores no Valor Adicionado Bruto (VAB) municipal de 2021.")
+
+    # ── Tabela comparativa completa ─────────────────────────────────────
+    with st.expander("Tabela comparativa completa", icon=":material/table_chart:"):
+        colunas_tabela = {
+            "PIB (mil R$, 2022)": ("pib_mil_reais_2022", "{:,.0f}"),
+            "PIB per capita (R$)": ("pib_per_capita_reais_2022", "{:,.0f}"),
+            "População (2022)": ("populacao_residente_2022", "{:,.0f}"),
+            "Variação pop. 2010-2022": ("variacao_populacao_2010_2022", "{:+,.0f}"),
+            "Crescimento pop. (%)": ("crescimento_populacional_pct_2010_2022", "{:+.2f}%"),
+            "Unidades locais": ("unidades_locais_2022", "{:,.0f}"),
+            "Empresas atuantes": ("empresas_atuantes_2022", "{:,.0f}"),
+            "Pessoal ocupado total": ("pessoal_ocupado_total_2022", "{:,.0f}"),
+            "Pessoal assalariado": ("pessoal_ocupado_assalariado_2022", "{:,.0f}"),
+            "Salários (mil R$)": ("salarios_mil_reais_2022", "{:,.0f}"),
+            "Salário médio mensal (R$)": ("salario_medio_mensal_reais_2022", "{:,.0f}"),
+            "Intensidade formal (por mil hab.)": ("intensidade_ocupacao_formal_por_mil_hab_2022", "{:.1f}"),
+            "Unid. locais por mil hab.": ("unidades_locais_por_mil_hab_2022", "{:.1f}"),
+            "% Assalariados": ("proporcao_assalariados_pct_2022", "{:.1f}%"),
+            "% Agropecuária (VAB 2021)": ("participacao_agropecuaria_pct_2021", "{:.1f}%"),
+            "% Indústria (VAB 2021)": ("participacao_industria_pct_2021", "{:.1f}%"),
+            "% Serviços (VAB 2021)": ("participacao_servicos_pct_2021", "{:.1f}%"),
+            "% Administração (VAB 2021)": ("participacao_administracao_pct_2021", "{:.1f}%"),
+            "Quadrante econômico": ("quadrante_economico", "{}"),
+        }
+
+        linhas_tabela = {}
+        for rotulo_t, (col_t, fmt_t) in colunas_tabela.items():
+            val_ta = linha_a[col_t]
+            val_tb = linha_b[col_t]
+            linhas_tabela[rotulo_t] = {
+                nome_a: fmt_t.format(val_ta) if pd.notna(val_ta) else "—",
+                nome_b: fmt_t.format(val_tb) if pd.notna(val_tb) else "—",
+            }
+
+        tabela_df = pd.DataFrame(linhas_tabela).T
+        tabela_df.index.name = "Indicador"
+        st.dataframe(tabela_df, width="stretch")
+
+    st.divider()
 
 st.subheader("Visão geral")
 rotulo_quantidade = "Municípios comparados" if comparacao_ativa else "Municípios no recorte"
@@ -248,19 +471,19 @@ metadados_indicador = INDICADORES_MAPA[indicador_mapa]
 coluna_mapa = metadados_indicador["coluna"]
 codigos_recorte = set(recorte["territorio_codigo"])
 mapa_recorte = mapa_base[mapa_base["territorio_codigo"].isin(codigos_recorte)].copy()
-geojson_malha = mapa_base[["codarea", "geometry"]].__geo_interface__
 limite_inferior, limite_superior = limites_escala_robusta(mapa_recorte[coluna_mapa])
 
 fig_mapa = px.choropleth(
     mapa_recorte,
     geojson=geojson_malha,
     locations="territorio_codigo",
-    featureidkey="properties.codarea",
+    featureidkey="id",
     color=coluna_mapa,
     hover_name="territorio_nome",
     hover_data={"territorio_codigo": False, "quadrante_economico": True},
     color_continuous_scale="Viridis",
     range_color=(limite_inferior, limite_superior),
+    scope="south america",
     labels={
         coluna_mapa: metadados_indicador["legenda"],
         "quadrante_economico": "Quadrante",
@@ -274,7 +497,7 @@ if comparacao_ativa:
         go.Choropleth(
             geojson=geojson_malha,
             locations=codigos_selecionados,
-            featureidkey="properties.codarea",
+            featureidkey="id",
             z=[1] * len(codigos_selecionados),
             zmin=0,
             zmax=1,

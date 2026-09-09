@@ -7,3 +7,5 @@ docs/figuras/*.aux
 docs/figuras/*.log
 docs/figuras/*.out
 tmp/
+.agents/
+.claude/
