@@ -112,17 +112,50 @@ def gerar_base_analitica() -> tuple[pd.DataFrame, dict]:
     resultado["unidades_locais_por_mil_hab_2022"] = resultado["unidades_locais_2022"] / resultado["populacao_residente_2022"] * 1000
     resultado["intensidade_ocupacao_formal_por_mil_hab_2022"] = resultado["pessoal_ocupado_total_2022"] / resultado["populacao_residente_2022"] * 1000
     resultado["proporcao_assalariados_pct_2022"] = resultado["pessoal_ocupado_assalariado_2022"] / resultado["pessoal_ocupado_total_2022"] * 100
-    mediana_pib = resultado["pib_per_capita_reais_2022"].median()
-    mediana_intensidade = resultado["intensidade_ocupacao_formal_por_mil_hab_2022"].median()
-    resultado["quadrante_economico"] = "baixo PIB per capita / baixa intensidade"
-    resultado.loc[(resultado["pib_per_capita_reais_2022"] >= mediana_pib) & (resultado["intensidade_ocupacao_formal_por_mil_hab_2022"] < mediana_intensidade), "quadrante_economico"] = "alto PIB per capita / baixa intensidade"
-    resultado.loc[(resultado["pib_per_capita_reais_2022"] < mediana_pib) & (resultado["intensidade_ocupacao_formal_por_mil_hab_2022"] >= mediana_intensidade), "quadrante_economico"] = "baixo PIB per capita / alta intensidade"
-    resultado.loc[(resultado["pib_per_capita_reais_2022"] >= mediana_pib) & (resultado["intensidade_ocupacao_formal_por_mil_hab_2022"] >= mediana_intensidade), "quadrante_economico"] = "alto PIB per capita / alta intensidade"
+    mediana_pib = float(resultado["pib_per_capita_reais_2022"].median())
+    mediana_intensidade = float(resultado["intensidade_ocupacao_formal_por_mil_hab_2022"].median())
+    tercil_1_intensidade = float(resultado["intensidade_ocupacao_formal_por_mil_hab_2022"].quantile(1 / 3))
+    tercil_2_intensidade = float(resultado["intensidade_ocupacao_formal_por_mil_hab_2022"].quantile(2 / 3))
+
+    # Classificação em 3 faixas de intensidade (tercis):
+    # - Baixa: abaixo do 1º tercil (< 33,3%)
+    # - Média: entre o 1º e o 2º tercil (miolo de 33,3% a 66,7%)
+    # - Alta: acima do 2º tercil (> 66,7%)
+    resultado["faixa_intensidade_formal"] = "média intensidade"
+    resultado.loc[resultado["intensidade_ocupacao_formal_por_mil_hab_2022"] < tercil_1_intensidade, "faixa_intensidade_formal"] = "baixa intensidade"
+    resultado.loc[resultado["intensidade_ocupacao_formal_por_mil_hab_2022"] > tercil_2_intensidade, "faixa_intensidade_formal"] = "alta intensidade"
+
+    # Quadrante econômico refinado: PIB per capita relativo à mediana estadual x 3 faixas de intensidade
+    resultado["quadrante_economico"] = resultado.apply(
+        lambda r: f"{'alto' if r['pib_per_capita_reais_2022'] >= mediana_pib else 'baixo'} PIB per capita / {r['faixa_intensidade_formal']}",
+        axis=1,
+    )
+
     relatorio["resultado_final"] = {
         "municipios": int(len(resultado)),
         "correspondencias_totais": int(resultado.notna().all(axis=1).sum()),
         "mediana_pib_per_capita_reais": float(mediana_pib),
         "mediana_intensidade_ocupacao_formal_por_mil_hab": float(mediana_intensidade),
+        "tercil_1_intensidade_ocupacao_formal_por_mil_hab": float(tercil_1_intensidade),
+        "tercil_2_intensidade_ocupacao_formal_por_mil_hab": float(tercil_2_intensidade),
+        "distribuicao_faixas_intensidade": {
+            str(k): int(v) for k, v in resultado["faixa_intensidade_formal"].value_counts().items()
+        },
+        "distribuicao_quadrantes": {
+            str(k): int(v) for k, v in resultado["quadrante_economico"].value_counts().items()
+        },
+    }
+    relatorio["benchmarks"] = {
+        "ceara_media_estadual": {
+            "pib_per_capita_reais": 24286.72,
+            "intensidade_ocupacao_formal_por_mil_hab": 217.91,
+            "municipios_acima_media_intensidade": int((resultado["intensidade_ocupacao_formal_por_mil_hab_2022"] >= 217.91).sum()),
+        },
+        "brasil_referencia_nacional": {
+            "pib_per_capita_reais": 49633.83,
+            "intensidade_ocupacao_formal_por_mil_hab": 308.97,
+            "municipios_acima_media_intensidade": int((resultado["intensidade_ocupacao_formal_por_mil_hab_2022"] >= 308.97).sum()),
+        },
     }
     resultado.to_csv(ANALYTICAL_DIR / "base_analitica_municipios.csv", index=False, sep=";", encoding="utf-8-sig")
     (ANALYTICAL_DIR / "relatorio_integracao.json").write_text(json.dumps(relatorio, ensure_ascii=False, indent=2), encoding="utf-8")

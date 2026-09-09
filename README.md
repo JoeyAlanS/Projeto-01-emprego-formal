@@ -61,6 +61,36 @@ python notebooks/extracao_graficos_relatorio.py
 
 A chave de pareamento é o código IBGE de sete dígitos em `territorio_codigo`. O nível municipal é `N6`. A tabela de estrutura setorial de 2021 é usada como associação exploratória com indicadores de 2022, pois existe defasagem de um ano. O PIB em mil reais é multiplicado por 1.000 antes do cálculo do PIB per capita. O salário médio mensal oficial da tabela 9509 é utilizado diretamente.
 
+### Critério de Intensidade de Ocupação Formal e Classificação Socioeconômica
+
+A **intensidade de ocupação formal** é definida como o número de postos formais existentes no município para cada mil habitantes residentes:
+
+$$\text{Intensidade de ocupação formal} = \frac{\text{Pessoal Ocupado Total (CEMPRE 2022)}}{\text{População Residente (Censo 2022)}} \times 1.000$$
+
+#### Por que a classificação por Tercis (Opção A)?
+Inicialmente, utilizava-se um corte binário simples na mediana estadual (102,8 postos/mil hab.). Essa abordagem apresentava duas limitações analíticas:
+1. **Dicotomia artificial:** Municípios com níveis muito próximos (ex.: 101 e 105 postos/mil hab.) eram colocados em categorias opostas ("baixa" e "alta"), ocultando a similaridade de suas estruturas produtivas;
+2. **Ignorava o núcleo do interior:** A maioria das cidades cearenses possui perfil intermediário, que ficava invisível na separação binária.
+
+Para solucionar essas limitações, a intensidade formal foi segmentada em **três tercis homogêneos** (distribuição 61 / 62 / 61 municípios):
+* **Baixa intensidade** ($< 91,0$ postos/mil hab. — 61 municípios): localidades com mercado formal muito incipiente;
+* **Média intensidade** ($91,0$ a $116,8$ postos/mil hab. — 62 municípios): o patamar típico da maior parte do interior do estado;
+* **Alta intensidade** ($> 116,8$ postos/mil hab. — 61 municípios): municípios com mercado de trabalho formal mais dinâmico em relação ao contexto cearense.
+
+#### Matriz Econômica (PIB per capita × Faixas de Intensidade)
+Combinando a posição do PIB per capita em relação à mediana estadual (R$ 13.087,74) com os três tercis de intensidade, o projeto classifica os 184 municípios em 6 perfis socioeconômicos:
+* **Alto PIB / alta intensidade (52 municípios):** polos regionais, capitais e cidades industriais consolidadas;
+* **Baixo PIB / baixa intensidade (48 municípios):** municípios de maior vulnerabilidade econômica e fraca formalização;
+* **Baixo PIB / média intensidade (35 municípios):** economia do interior tradicional com formalização dentro da média, mas baixa geração de renda per capita;
+* **Alto PIB / média intensidade (27 municípios):** municípios com renda razoável e absorção formal mediana;
+* **Alto PIB / baixa intensidade (13 municípios):** enclaves econômicos com alta geração de valor agregado (ex.: parques eólicos, mineração, agropecuária de capital intensivo) que geram poucos postos de trabalho formais locais;
+* **Baixo PIB / alta intensidade (9 municípios):** economias com alta densidade de vínculos formais (ex.: forte presença do setor público municipal ou polos produtivos de baixa remuneração), porém com baixo PIB per capita global.
+
+#### Benchmarks de Nível Superior (Ceará e Brasil)
+Apesar do rótulo relativo de "alta intensidade" cearense ($> 116,8$), os dados de nível superior evidenciam a profunda assimetria regional:
+* **Média ponderada do Ceará (`N3`):** **217,9** postos por mil hab. Apenas **11 municípios** cearenses superam a média do próprio estado (Aquiraz, Eusébio, Fortaleza, Frecheirinha, Horizonte, Jijoca de Jericoacoara, Juazeiro do Norte, Maracanaú, Pereiro, São Gonçalo do Amarante e Sobral).
+* **Média nacional do Brasil (`N1`):** **309,0** postos por mil hab. (e PIB per capita de R$ 49.633,83). Apenas **3 municípios** do estado superam a média nacional de formalização (Eusébio, Fortaleza e Pereiro).
+
 Os símbolos SIDRA `-`, `X`, `..` e `...` são classificados como indisponíveis (`NA`); `0` é preservado como zero informado. Os diagnósticos atuais dos arquivos fornecidos estão registrados no repositório e indicam 184 municípios por base, zero duplicatas na chave declarada e zero ocorrências desses símbolos.
 
 ## Entrega e próximos passos

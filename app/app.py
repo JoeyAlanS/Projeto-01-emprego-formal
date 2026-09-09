@@ -40,7 +40,7 @@ st.set_page_config(page_title="Economia e emprego formal - CE", page_icon="📊"
 
 
 @st.cache_data
-def carregar_dados() -> tuple[pd.DataFrame, gpd.GeoDataFrame, dict]:
+def carregar_dados(mtime: float = 0.0) -> tuple[pd.DataFrame, gpd.GeoDataFrame, dict]:
     """Carrega e valida a base tabular e sua correspondência com a malha."""
     df = pd.read_csv(BASE_PATH, sep=";", encoding="utf-8-sig", dtype={"territorio_codigo": "string"})
     malha = gpd.read_file(MAP_PATH)
@@ -113,17 +113,24 @@ if not MAP_PATH.exists():
     st.stop()
 
 try:
-    df, mapa_base, geojson_malha = carregar_dados()
+    df, mapa_base, geojson_malha = carregar_dados(BASE_PATH.stat().st_mtime)
 except (OSError, ValueError) as erro:
     st.error(f"Não foi possível preparar os dados do mapa: {erro}")
     st.stop()
 
 with st.sidebar:
     st.header("Filtros e comparação")
-    quadrantes = ["Todos"] + sorted(df["quadrante_economico"].dropna().unique().tolist())
-    quadrante = st.selectbox("Quadrante econômico", quadrantes, key="quadrante_economico")
+    faixas_intensidade = ["Todas", "baixa intensidade", "média intensidade", "alta intensidade"]
+    faixa_intensidade_sel = st.selectbox("Faixa de intensidade (Tercis)", faixas_intensidade, key="faixa_intensidade_filtro")
 
-    recorte = df if quadrante == "Todos" else df[df["quadrante_economico"] == quadrante]
+    quadrantes = ["Todos"] + sorted(df["quadrante_economico"].dropna().unique().tolist())
+    quadrante = st.selectbox("Matriz econômica", quadrantes, key="quadrante_economico")
+
+    recorte = df
+    if faixa_intensidade_sel != "Todas":
+        recorte = recorte[recorte["faixa_intensidade_formal"] == faixa_intensidade_sel]
+    if quadrante != "Todos":
+        recorte = recorte[recorte["quadrante_economico"] == quadrante]
     municipios_disponiveis = sorted(recorte["territorio_nome"].dropna().unique().tolist())
     selecao_anterior = st.session_state.get("municipios_comparacao", [])
     selecao_valida = [nome for nome in selecao_anterior if nome in municipios_disponiveis]
@@ -368,6 +375,7 @@ if comparacao_ativa and len(comparacao) == 2:
             "Salários (mil R$)": ("salarios_mil_reais_2022", "{:,.0f}"),
             "Salário médio mensal (R$)": ("salario_medio_mensal_reais_2022", "{:,.0f}"),
             "Intensidade formal (por mil hab.)": ("intensidade_ocupacao_formal_por_mil_hab_2022", "{:.1f}"),
+            "Faixa de intensidade": ("faixa_intensidade_formal", "{}"),
             "Unid. locais por mil hab.": ("unidades_locais_por_mil_hab_2022", "{:.1f}"),
             "% Assalariados": ("proporcao_assalariados_pct_2022", "{:.1f}%"),
             "% Agropecuária (VAB 2021)": ("participacao_agropecuaria_pct_2021", "{:.1f}%"),
@@ -443,28 +451,56 @@ with left:
         st.plotly_chart(fig_barras, width="stretch", key="grafico_pib_comparacao")
 
 with right:
-    st.subheader("PIB per capita × intensidade formal")
+    st.subheader("PIB per capita × intensidade formal (Tercis)")
     mostrar_rotulos = comparacao_ativa and len(comparacao) <= 12
+    t1_int = float(df["intensidade_ocupacao_formal_por_mil_hab_2022"].quantile(1 / 3))
+    t2_int = float(df["intensidade_ocupacao_formal_por_mil_hab_2022"].quantile(2 / 3))
+
     fig_cruzamento = px.scatter(
         comparacao,
         x="pib_per_capita_reais_2022",
         y="intensidade_ocupacao_formal_por_mil_hab_2022",
         size="populacao_residente_2022",
-        color="quadrante_economico",
+        color="faixa_intensidade_formal",
+        category_orders={"faixa_intensidade_formal": ["baixa intensidade", "média intensidade", "alta intensidade"]},
+        color_discrete_map={
+            "baixa intensidade": "#E66101",
+            "média intensidade": "#5E3C99",
+            "alta intensidade": "#2B83BA",
+        },
         text="municipio_exibicao" if mostrar_rotulos else None,
         hover_name="territorio_nome",
         labels={
             "pib_per_capita_reais_2022": "PIB per capita (R$)",
             "intensidade_ocupacao_formal_por_mil_hab_2022": "Ocupação formal por mil hab.",
-            "quadrante_economico": "Quadrante",
+            "faixa_intensidade_formal": "Faixa (Tercis)",
+            "quadrante_economico": "Matriz econômica",
             "populacao_residente_2022": "População",
         },
+        hover_data={"faixa_intensidade_formal": True, "quadrante_economico": True},
         size_max=42,
         height=450,
+    )
+    fig_cruzamento.add_hline(
+        y=t1_int,
+        line_dash="dash",
+        line_color="#E66101",
+        annotation_text=f"1º Tercil ({t1_int:.1f})",
+        annotation_position="bottom right",
+    )
+    fig_cruzamento.add_hline(
+        y=t2_int,
+        line_dash="dash",
+        line_color="#2B83BA",
+        annotation_text=f"2º Tercil ({t2_int:.1f})",
+        annotation_position="top right",
     )
     fig_cruzamento.update_traces(textposition="top center", marker_line_width=0.8, marker_line_color="white")
     fig_cruzamento.update_layout(margin=dict(l=0, r=0, t=10, b=0), legend_title_text="")
     st.plotly_chart(fig_cruzamento, width="stretch", key="grafico_cruzamento")
+    st.caption(
+        f"Classificação em 3 tercis: Baixa (< {t1_int:.1f}), Média ({t1_int:.1f} a {t2_int:.1f}) e Alta (> {t2_int:.1f} postos/mil hab.)."
+    )
 
 st.subheader("Mapa de comparação")
 metadados_indicador = INDICADORES_MAPA[indicador_mapa]
@@ -552,6 +588,11 @@ st.plotly_chart(fig_crescimento, width="stretch", key="grafico_crescimento")
 with st.expander("Fontes, metodologia e limitações"):
     st.markdown("""
     - **Fontes:** IBGE/SIDRA, tabelas 9509 (CEMPRE 2022), 5938 (PIB 2021 e PIB 2022) e 4709 (Censo 2022).
+    - **Critério de Intensidade Formal (Tercis):** Para evitar a dicotomia binária arbitrária da mediana simples (que agrupava municípios intermediários similares em pólos opostos), a intensidade formal por mil habitantes é dividida em 3 tercis proporcionais:
+      - *Baixa intensidade:* < 91,0 postos/mil hab. (os 33% municípios com menor formalização);
+      - *Média intensidade:* 91,0 a 116,8 postos/mil hab. (miolo representativo da maioria das cidades do interior);
+      - *Alta intensidade:* > 116,8 postos/mil hab. (os 33% municípios com maior dinamismo formal relativo).
+    - **Benchmarks de Nível Superior:** A média estadual do Ceará (217,9 postos/mil hab.) e a média nacional do Brasil (309,0 postos/mil hab.) revelam a forte assimetria regional: apenas 11 municípios cearenses superam a média do estado e apenas 3 superam a do país.
     - **Integração:** filtro municipal `N6` e junção 1:1 pelo código IBGE de sete dígitos `territorio_codigo`; nomes não são usados como chave.
     - **Mapa:** cada polígono é associado diretamente ao código `codarea` da malha. A escala entre os percentis 5 e 95 impede que poucos valores extremos escondam as diferenças entre a maioria dos municípios; o valor original permanece disponível no detalhe.
     - **Escala:** PIB em Mil Reais foi multiplicado por 1.000 para o PIB per capita. O salário médio é o indicador mensal oficial da tabela 9509.

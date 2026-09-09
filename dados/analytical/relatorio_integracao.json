@@ -33,6 +33,33 @@
     "municipios": 184,
     "correspondencias_totais": 184,
     "mediana_pib_per_capita_reais": 13087.736302836765,
-    "mediana_intensidade_ocupacao_formal_por_mil_hab": 102.80426111221377
+    "mediana_intensidade_ocupacao_formal_por_mil_hab": 102.80426111221377,
+    "tercil_1_intensidade_ocupacao_formal_por_mil_hab": 91.03073384904872,
+    "tercil_2_intensidade_ocupacao_formal_por_mil_hab": 116.75584681055733,
+    "distribuicao_faixas_intensidade": {
+      "média intensidade": 62,
+      "alta intensidade": 61,
+      "baixa intensidade": 61
+    },
+    "distribuicao_quadrantes": {
+      "alto PIB per capita / alta intensidade": 52,
+      "baixo PIB per capita / baixa intensidade": 48,
+      "baixo PIB per capita / média intensidade": 35,
+      "alto PIB per capita / média intensidade": 27,
+      "alto PIB per capita / baixa intensidade": 13,
+      "baixo PIB per capita / alta intensidade": 9
+    }
+  },
+  "benchmarks": {
+    "ceara_media_estadual": {
+      "pib_per_capita_reais": 24286.72,
+      "intensidade_ocupacao_formal_por_mil_hab": 217.91,
+      "municipios_acima_media_intensidade": 11
+    },
+    "brasil_referencia_nacional": {
+      "pib_per_capita_reais": 49633.83,
+      "intensidade_ocupacao_formal_por_mil_hab": 308.97,
+      "municipios_acima_media_intensidade": 3
+    }
   }
 }
