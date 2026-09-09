@@ -93,6 +93,8 @@ Apesar do rótulo relativo de "alta intensidade" cearense ($> 116,8$), os dados 
 
 Os símbolos SIDRA `-`, `X`, `..` e `...` são classificados como indisponíveis (`NA`); `0` é preservado como zero informado. Os diagnósticos atuais dos arquivos fornecidos estão registrados no repositório e indicam 184 municípios por base, zero duplicatas na chave declarada e zero ocorrências desses símbolos.
 
+https://projeto-01-emprego-formalgit-4wp3uscukwqnb94um3r3az.streamlit.app
+
 ## Entrega e próximos passos
 
 O acompanhamento documenta o primeiro cruzamento, duas visualizações preliminares e um wireframe. Para a entrega final ainda devem ser atualizados o deploy público do dashboard, os slides, o vídeo extensionista e os links exigidos no AVA. Os links externos não foram inventados neste repositório; devem ser preenchidos pela equipe quando estiverem disponíveis.
