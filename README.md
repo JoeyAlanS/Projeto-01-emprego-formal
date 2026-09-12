@@ -6,6 +6,10 @@ Análise exploratória e dashboard com dados municipais do IBGE/SIDRA para inves
 **Tema:** 1 - Economia e emprego formal
 **Recorte:** 184 municípios do Ceará; CEMPRE 2022, PIB 2021/2022 e Censo 2022.
 
+**Link youtube:** https://youtu.be/1uICMSsxH20
+
+**Link do projeto:** https://projeto-01-emprego-formalgit-4wp3uscukwqnb94um3r3az.streamlit.app
+
 ## Perguntas de análise
 
 1. Como o PIB por habitante se distribui entre os municípios em 2022?
@@ -93,7 +97,7 @@ Apesar do rótulo relativo de "alta intensidade" cearense ($> 116,8$), os dados 
 
 Os símbolos SIDRA `-`, `X`, `..` e `...` são classificados como indisponíveis (`NA`); `0` é preservado como zero informado. Os diagnósticos atuais dos arquivos fornecidos estão registrados no repositório e indicam 184 municípios por base, zero duplicatas na chave declarada e zero ocorrências desses símbolos.
 
-https://projeto-01-emprego-formalgit-4wp3uscukwqnb94um3r3az.streamlit.app
+
 
 ## Entrega e próximos passos
 
